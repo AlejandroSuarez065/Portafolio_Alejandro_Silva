@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Alejandro Silva — Game Designer</title>
+
+  <meta
+    name="description"
+    content="Portafolio de Alejandro Silva. Game Designer e Ingeniero en Multimedia."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* GALERÍAS */
+
+    .project-gallery {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      background: #10131b;
+    }
+
+    .project-gallery .gallery-slide {
+      margin: 0;
+      width: 100%;
+    }
+
+    .project-gallery .gallery-slide[hidden] {
+      display: none !important;
+    }
+
+    .project-gallery .gallery-slide img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      object-fit: contain;
+    }
+
+    .project-gallery .gallery-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 5;
+      display: grid;
+      place-items: center;
+      width: 56px;
+      height: 56px;
+      padding: 0;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      background: #111827;
+      color: #fff;
+      opacity: 1;
+      visibility: visible;
+      cursor: pointer;
+      box-shadow: 0 4px 18px #0009;
+    }
+
+    .project-gallery .gallery-arrow--previous {
+      left: 16px;
+    }
+
+    .project-gallery .gallery-arrow--next {
+      right: 16px;
+    }
+
+    .project-gallery .gallery-arrow svg {
+      width: 28px;
+      height: 28px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 3;
+    }
+
+    .project-gallery .gallery-arrow:hover {
+      background: #2452ec;
+    }
+
+    .project-gallery .gallery-arrow:focus-visible,
+    .project-gallery:focus-visible {
+      outline: 4px solid #ffdf58;
+      outline-offset: -4px;
+    }
+
+    .project-gallery .gallery-counter {
+      position: absolute;
+      z-index: 5;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 1px solid #ffffff80;
+      border-radius: 999px;
+      padding: 8px 14px;
+      background: #111827;
+      color: #fff;
+      font: 600 14px/1.2 Inter, sans-serif;
+    }
+
+    .project-gallery .media-label {
+      z-index: 4;
+    }
+
+    /* SELECTOR DE IDIOMA */
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .language-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .language-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      min-height: 40px;
+      padding: 8px 10px;
+      border: 1px solid currentColor;
+      border-radius: 6px;
+      background: transparent;
+      color: inherit;
+      font: 600 12px/1.2 Inter, sans-serif;
+      cursor: pointer;
+    }
+
+    .language-button[aria-pressed="true"] {
+      background: #2452ec;
+      border-color: #2452ec;
+      color: #fff;
+    }
+
+    .language-button:hover {
+      box-shadow: 0 0 0 1px currentColor;
+    }
+
+    .language-button:focus-visible {
+      outline: 3px solid #ffdf58;
+      outline-offset: 3px;
+    }
+
+    /* BANDERAS PEQUEÑAS */
+
+    .language-flag-slot {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 16px;
+      flex: 0 0 22px;
+    }
+
+    .language-flag {
+      display: block;
+      width: 22px !important;
+      height: 16px !important;
+      max-width: 22px !important;
+      object-fit: contain;
+    }
+
+    .language-flag[hidden] {
+      display: none !important;
+    }
+
+    /* VIDEOS DE YOUTUBE */
+
+    .youtube-project .youtube-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      min-height: 200px;
+      overflow: hidden;
+      background: #10131b;
+    }
+
+    .youtube-project .youtube-frame iframe {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .youtube-project .media-label {
+      pointer-events: none;
+    }
+
+    .youtube-link {
+      margin: 12px 0 0;
+      font: 500 13px/1.5 Inter, sans-serif;
+    }
+
+    .youtube-link a {
+      color: inherit;
+      text-underline-offset: 4px;
+    }
+
+    .youtube-link a:hover {
+      color: #2452ec;
+    }
+
+    @media (max-width: 600px) {
+      .header.page-width {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .header-actions {
+        gap: 10px;
+      }
+
+      .language-button {
+        min-height: 40px;
+        padding: 7px 8px;
+        font-size: 11px;
+      }
+
+      .project-gallery .gallery-arrow {
+        width: 44px;
+        height: 44px;
+      }
+
+      .project-gallery .gallery-arrow--previous {
+        left: 8px;
+      }
+
+      .project-gallery .gallery-arrow--next {
+        right: 8px;
+      }
+
+      .project-gallery .gallery-counter {
+        bottom: 8px;
+        padding: 6px 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#proyectos">
+    Ir a los proyectos
+  </a>
+
+  <main>
+
+    <!-- PORTADA -->
+
+    <section class="cover" id="inicio" aria-labelledby="nombre">
+      <header class="header page-width">
+        <a class="brand" href="#inicio" aria-label="Volver al inicio">
+          PORTAFOLIO
+          <span aria-hidden="true"></span>
+        </a>
+
+        <div class="header-actions">
+          <a class="header-link eyebrow" href="#proyectos">
+            Explorar proyectos ↘
+          </a>
+
+          <div
+            class="language-switch"
+            role="group"
+            aria-label="Seleccionar idioma"
+          >
+            <button
+              class="language-button"
+              type="button"
+              data-language="es"
+              aria-pressed="true"
+              lang="es"
+            >
+              <span class="language-flag-slot" aria-hidden="true">
+                <img
+                  class="language-flag"
+                  src="Images/Flag_of_Colombia.svg.webp"
+                  alt=""
+                  width="22"
+                  height="16"
+                >
+              </span>
+
+              <span>Español</span>
+            </button>
+
+            <button
+              class="language-button"
+              type="button"
+              data-language="en"
+              aria-pressed="false"
+              lang="en"
+            >
+              <span class="language-flag-slot" aria-hidden="true">
+                <img
+                  class="language-flag"
+                  src="Images/Flag_of_the_United_States_(1912-1959).svg"
+                  alt=""
+                  width="22"
+                  height="16"
+                >
+              </span>
+
+              <span>English</span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <div class="hero page-width">
+        <div class="hero-heading">
+          <h1 class="hero-name" id="nombre">
+            <span>ALEJANDRO</span>
+            <span>SILVA<span class="name-period">.</span></span>
+          </h1>
+        </div>
+
+        <figure class="portrait">
+          <div class="portrait-image">
+            <img
+              src="Images/mi-foto2.png"
+              alt="Alejandro Silva"
+              width="800"
+              height="1000"
+              fetchpriority="high"
+            >
+
+            <span class="portrait-marker" aria-hidden="true"></span>
+          </div>
+
+          <figcaption>
+            <span>Este soy yo</span>
+            <span aria-hidden="true">↗</span>
+          </figcaption>
+        </figure>
+
+        <div class="hero-pitch">
+          <p class="eyebrow role">
+            Game Designer | Game Developer | QA Tester |
+          </p>
+
+          <h2>INGENIERO EN MULTIMEDIA</h2>
+
+          <a class="explore-link" href="#proyectos">
+            <span>Ver mi trabajo</span>
+            <span class="explore-arrow" aria-hidden="true">↓</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="page-width">
+        <div class="status-bar">
+          <span class="status-item">
+            <span class="status-dot" aria-hidden="true"></span>
+            Portafolio de Alejandro Silva
+          </span>
+
+          <span></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE MÍ Y CONTACTO -->
+
+    <section class="work" id="sobre-mi" aria-labelledby="about-title">
+      <div class="page-width">
+
+        <header class="work-header reveal">
+          <div class="section-meta">
+            <p class="eyebrow">Sobre mí</p>
+            <span class="eyebrow">Alejandro Silva</span>
+          </div>
+
+          <h2 class="work-title" id="about-title">
+            <span>SOBRE</span>
+            <span>MÍ</span>
+          </h2>
+
+          <div class="work-intro">
+            <p>
+              Soy Alejandro Silva, estudiante de Ingeniería Multimedia
+              enfocado en el desarrollo de videojuegos. Me gusta crear
+              mecánicas, convertir ideas en prototipos y experimentar
+              con distintas formas de hacer que un juego funcione.
+            </p>
+          </div>
+        </header>
+
+        <div class="project-information reveal">
+          <div class="project-facts">
+            <div>
+              <span class="fact-label">Correo</span>
+
+              <p>
+                <a href="mailto:m.alejandro.silva.suarez@gmail.com">
+                  m.alejandro.silva.suarez@gmail.com
+                </a>
+              </p>
+            </div>
+
+            <div>
+              <span class="fact-label">LinkedIn</span>
+
+              <p>
+                <a
+                  href="https://www.linkedin.com/in/mario-alejandro-silva-suarez-1b66a0395/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Alejandro Silva ↗
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <div class="project-story">
+            <p class="project-hook">
+              Programo y diseño videojuegos, trabajando principalmente
+              en mecánicas, sistemas y prototipos.
+            </p>
+
+            <p class="project-description">
+              He trabajado en interacción en realidad virtual,
+              sistemas de combate, simulación física y entornos
+              que se transforman con la música. Desarrollo
+              principalmente con Unity y C#, y también he
+              programado juegos con C++ y OpenGL.
+            </p>
+          </div>
+        </div>
+
+        <!-- PROYECTO 01: GENERACIÓN PROCEDURAL -->
+
+        <article
+          class="project"
+          id="proyectos"
+          aria-labelledby="project-title-1"
+        >
+          <header class="project-heading reveal">
+            <span class="project-number">01</span>
+
+            <div class="project-heading-text">
+              <p class="eyebrow project-category">Unity</p>
+
+              <h3 id="project-title-1">
+                Generación procedural de ecosistemas virtuales
+                a partir de álbumes musicales
+              </h3>
+            </div>
+
+            <span class="project-symbol" aria-hidden="true">↘</span>
+          </header>
+
+          <figure class="project-media reveal youtube-project">
+            <div class="youtube-frame">
+              <iframe
+                id="video-proyecto-01"
+                src="https://www.youtube.com/embed/OQigaPcWBs8"
+                title="Gameplay del ecosistema virtual generado a partir de música"
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+
+            <figcaption class="media-label">
+              Proyecto 01
+            </figcaption>
+          </figure>
+
+          <p class="youtube-link">
+            <a
+              href="https://www.youtube.com/watch?v=OQigaPcWBs8"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Ver en YouTube ↗
+            </a>
+          </p>
+
+          <div class="project-information reveal">
+            <div class="project-facts">
+              <div>
+                <span class="fact-label">Mi rol</span>
+                <p>Diseño y desarrollo integral — proyecto individual.</p>
+              </div>
+
+              <div>
+                <span class="fact-label">Herramientas</span>
+                <p>Unity, C#, Python</p>
+              </div>
+            </div>
+
+            <div class="project-story">
+              <p class="project-hook">
+                Proyecto seleccionado para ser presentado en el
+                Congreso Internacional de Ciencias Básicas e
+                Ingeniería — CICI 2026, el 8 de octubre.
+              </p>
+
+              <p class="project-description">
+                Diseñé una experiencia interactiva en Unity donde
+                la música no acompaña al mundo: lo construye y lo
+                transforma. Cada canción modifica el entorno, el
+                clima, la iluminación y la atmósfera, convirtiendo
+                un álbum completo en una experiencia explorable
+                y cambiante.
+              </p>
+
+              <details class="design-details">
+                <summary>
+                  <span>Detrás del diseño</span>
+                  <span class="details-icon" aria-hidden="true"></span>
+                </summary>
+
+                <div class="details-content">
+                  <h4>La música construye el mundo</h4>
+
+                  <p>
+                    ¿Cómo lograr que la música transformara un mundo
+                    jugable sin sentirse como un simple visualizador?
+                    El reto fue convertir cada canción en cambios
+                    perceptibles del entorno, manteniendo siempre
+                    una relación clara entre lo que el jugador
+                    escucha y lo que sucede en pantalla.
+                  </p>
+
+                  <h4>Un sistema, múltiples experiencias</h4>
+
+                  <p>
+                    Diseñé un sistema capaz de interpretar las
+                    características de cada canción y traducirlas
+                    en cambios visuales. Esto permite que cada pista
+                    genere una versión distinta del mismo ecosistema
+                    sin diseñar manualmente cada escenario.
+                  </p>
+
+                  <h4>Todo tiene una causa</h4>
+
+                  <p>
+                    Definí una regla central de diseño: nada aparece
+                    en el mundo si la música no lo provoca. Desde un
+                    cambio en el paisaje hasta la lluvia o la aparición
+                    de elementos visuales, cada transformación debe
+                    estar conectada con lo que está sonando.
+                  </p>
+                </div>
+              </details>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROYECTO 02: MULAGA 25 -->
+
+        <article class="project" aria-labelledby="project-title-2">
+          <header class="project-heading reveal">
+            <span class="project-number">02</span>
+
+            <div class="project-heading-text">
+              <p class="eyebrow project-category">Shooter / VR</p>
+              <h3 id="project-title-2">MULAGA 25</h3>
+            </div>
+
+            <span class="project-symbol" aria-hidden="true">↘</span>
+          </header>
+
+          <figure class="project-media reveal youtube-project">
+            <div class="youtube-frame">
+              <iframe
+                id="video-proyecto-02"
+                src="https://www.youtube.com/embed/_Eruu5bebSo"
+                title="Tráiler de MULAGA 25"
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+
+            <figcaption class="media-label">
+              Proyecto 02
+            </figcaption>
+          </figure>
+
+          <p class="youtube-link">
+            <a
+              href="https://www.youtube.com/watch?v=_Eruu5bebSo"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Ver en YouTube ↗
+            </a>
+          </p>
+
+          <div class="project-information reveal">
+            <div class="project-facts">
+              <div>
+                <span class="fact-label">Mi rol</span>
+
+                <p>
+                  Programación de gameplay — armas, interacción VR
+                  y jefe final.
+                </p>
+              </div>
+
+              <div>
+                <span class="fact-label">Herramientas</span>
+                <p>Unity, C#, XR Interaction Toolkit</p>
+              </div>
+            </div>
+
+            <div class="project-story">
+              <p class="project-hook">
+                Un shooter arcade en realidad virtual para celebrar
+                los 25 años de Ingeniería en Multimedia.
+              </p>
+
+              <p class="project-description">
+                Inspirado en Doom y Galaga, MULAGA 25 lleva al jugador
+                a recorrer escenarios y enfrentar enemigos para rescatar
+                a los profesores de Ingeniería en Multimedia de la UMNG.
+                Dentro del equipo, desarrollé las mecánicas de armas,
+                granadas y escudos, además de un jefe final con distintas
+                fases y patrones de ataque.
+              </p>
+
+              <details class="design-details">
+                <summary>
+                  <span>Detrás del diseño</span>
+                  <span class="details-icon" aria-hidden="true"></span>
+                </summary>
+
+                <div class="details-content">
+                  <h4>Armas e interacción en VR</h4>
+
+                  <p>
+                    Desarrollé la interacción para equipar el arma,
+                    apuntar y disparar con el gatillo del controlador.
+                    Trabajé en el comportamiento de los proyectiles
+                    y su detección de impactos para conectar las acciones
+                    del jugador con la respuesta del combate.
+                  </p>
+
+                  <h4>Granadas y escudos</h4>
+
+                  <p>
+                    Implementé granadas y escudos como alternativas
+                    durante los enfrentamientos. Las granadas permiten
+                    atacar un área y los escudos ofrecen protección,
+                    ampliando las opciones del jugador más allá
+                    del disparo.
+                  </p>
+
+                  <h4>Diseño del jefe final</h4>
+
+                  <p>
+                    Desarrollé e integré un jefe con fases de combate
+                    y diferentes patrones de ataque. El enfrentamiento
+                    exige reconocer las amenazas, esquivar y encontrar
+                    oportunidades para atacar, con mecánicas inspiradas
+                    en los juegos soulslike.
+                  </p>
+                </div>
+              </details>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROYECTO 03: CANNON CRASHERS -->
+
+        <article class="project" aria-labelledby="project-title-3">
+          <header class="project-heading reveal">
+            <span class="project-number">03</span>
+
+            <div class="project-heading-text">
+              <p class="eyebrow project-category">
+                Simulación física / 2D
+              </p>
+
+              <h3 id="project-title-3">CANNON CRASHERS</h3>
+            </div>
+
+            <span class="project-symbol" aria-hidden="true">↘</span>
+          </header>
+
+          <figure
+            class="project-media reveal project-gallery"
+            data-gallery
+            tabindex="0"
+            role="region"
+            aria-roledescription="carrusel"
+            aria-label="Capturas de Cannon Crashers"
+          >
+            <div class="gallery-slide">
+              <img
+                src="Images/Cannon_UI.png"
+                alt="Interfaz de Cannon Crashers"
+                loading="lazy"
+                decoding="async"
+              >
+            </div>
+
+            <div class="gallery-slide" hidden>
+              <img
+                src="Images/cannon1.png"
+                alt="Captura 1 de Cannon Crashers"
+                loading="lazy"
+                decoding="async"
+              >
+            </div>
+
+            <div class="gallery-slide" hidden>
+              <img
+                src="Images/cannon2.png"
+                alt="Captura 2 de Cannon Crashers"
+                loading="lazy"
+                decoding="async"
+              >
+            </div>
+
+            <button
+              class="gallery-arrow gallery-arrow--previous"
+              type="button"
+              aria-label="Imagen anterior de Cannon Crashers"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M15 5l-7 7 7 7"></path>
+              </svg>
+            </button>
+
+            <button
+              class="gallery-arrow gallery-arrow--next"
+              type="button"
+              aria-label="Imagen siguiente de Cannon Crashers"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M9 5l7 7-7 7"></path>
+              </svg>
+            </button>
+
+            <span
+              class="gallery-counter"
+              aria-live="polite"
+              aria-atomic="true"
+            >
+              1 / 3
+            </span>
+
+            <figcaption class="media-label">
+              Proyecto 03
+            </figcaption>
+          </figure>
+
+          <div class="project-information reveal">
+            <div class="project-facts">
+              <div>
+                <span class="fact-label">Mi rol</span>
+
+                <p>
+                  Programación de gameplay — carga del disparo,
+                  predicción de trayectoria y sistemas de daño y victoria.
+                </p>
+              </div>
+
+              <div>
+                <span class="fact-label">Herramientas</span>
+                <p>Unity, C#</p>
+              </div>
+            </div>
+
+            <div class="project-story">
+              <p class="project-hook">
+                Controlar la fuerza del disparo y anticipar su trayectoria
+                bajo el efecto del viento y la gravedad.
+              </p>
+
+              <p class="project-description">
+                En este proyecto en equipo, desarrollé la carga progresiva
+                del disparo y su predicción visual mediante puntos.
+                También implementé la vida de los enemigos, la condición
+                de victoria y el daño causado por impactos de las paredes
+                al alcanzar una velocidad determinada.
+              </p>
+
+              <details class="design-details">
+                <summary>
+                  <span>Detrás del diseño</span>
+                  <span class="details-icon" aria-hidden="true"></span>
+                </summary>
+
+                <div class="details-content">
+                  <h4>Carga del disparo</h4>
+
+                  <p>
+                    Implementé una carga que aumenta mientras el jugador
+                    mantiene presionado el clic izquierdo. Al llegar al
+                    máximo, la fuerza vuelve al mínimo y comienza otro
+                    ciclo. El jugador debe soltar en el momento adecuado
+                    para disparar con la fuerza que necesita.
+                  </p>
+
+                  <h4>Predicción de trayectoria</h4>
+
+                  <p>
+                    Desarrollé una guía de puntos que muestra el recorrido
+                    estimado antes de disparar. El cálculo considera la
+                    posición inicial, la dirección, la fuerza del disparo
+                    y la aceleración producida por el viento y la gravedad,
+                    permitiendo anticipar cómo estas variables afectan
+                    la trayectoria.
+                  </p>
+
+                  <h4>Daño y condición de victoria</h4>
+
+                  <p>
+                    Implementé un sistema de vida para que los enemigos
+                    recibieran daño hasta ser eliminados y una señal visual
+                    de victoria al derrotarlos a todos. También configuré
+                    el daño por impactos de las paredes, condicionado
+                    a una velocidad mínima para que el contacto
+                    cuente como daño.
+                  </p>
+                </div>
+              </details>
+
+              <!-- Aquí puedes añadir el enlace de itch.io. -->
+            </div>
+          </div>
+        </article>
+
+        <!-- PROYECTO 04: CONCÉNTRESE -->
+
+        <article class="project" aria-labelledby="project-title-4">
+          <header class="project-heading reveal">
+            <span class="project-number">04</span>
+
+            <div class="project-heading-text">
+              <p class="eyebrow project-category">Memoria / 2D</p>
+              <h3 id="project-title-4">CONCÉNTRESE</h3>
+            </div>
+
+            <span class="project-symbol" aria-hidden="true">↘</span>
+          </header>
+
+          <figure
+            class="project-media reveal project-gallery"
+            data-gallery
+            tabindex="0"
+            role="region"
+            aria-roledescription="carrusel"
+            aria-label="Capturas de Concéntrese"
+          >
+            <div class="gallery-slide">
+              <img
+                src="Images/Concentrese.png"
+                alt="Tablero del juego Concéntrese"
+                loading="lazy"
+                decoding="async"
+              >
+            </div>
+
+            <div class="gallery-slide" hidden>
+              <img
+                src="Images/ConcentreseUI.png"
+                alt="Interfaz del juego Concéntrese"
+                loading="lazy"
+                decoding="async"
+              >
+            </div>
+
+            <button
+              class="gallery-arrow gallery-arrow--previous"
+              type="button"
+              aria-label="Imagen anterior de Concéntrese"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M15 5l-7 7 7 7"></path>
+              </svg>
+            </button>
+
+            <button
+              class="gallery-arrow gallery-arrow--next"
+              type="button"
+              aria-label="Imagen siguiente de Concéntrese"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M9 5l7 7-7 7"></path>
+              </svg>
+            </button>
+
+            <span
+              class="gallery-counter"
+              aria-live="polite"
+              aria-atomic="true"
+            >
+              1 / 2
+            </span>
+
+            <figcaption class="media-label">
+              Proyecto 04
+            </figcaption>
+          </figure>
+
+          <div class="project-information reveal">
+            <div class="project-facts">
+              <div>
+                <span class="fact-label">Mi rol</span>
+
+                <p>
+                  Programación gráfica y de gameplay — interacción con
+                  cartas, comprobación de parejas y dificultad.
+                </p>
+              </div>
+
+              <div>
+                <span class="fact-label">Herramientas</span>
+                <p>C++, OpenGL, GLUT</p>
+              </div>
+            </div>
+
+            <div class="project-story">
+              <p class="project-hook">
+                Encontrar todas las parejas antes de que termine el tiempo.
+                Cada intento revela información que necesitas recordar.
+              </p>
+
+              <p class="project-description">
+                Desarrollé un juego de memoria en C++ con OpenGL,
+                programando la representación de las cartas y su
+                interacción con el mouse. Integré la comprobación
+                de parejas, la distribución aleatoria del tablero
+                y distintos niveles de dificultad.
+              </p>
+
+              <details class="design-details">
+                <summary>
+                  <span>Detrás del diseño</span>
+                  <span class="details-icon" aria-hidden="true"></span>
+                </summary>
+
+                <div class="details-content">
+                  <h4>Programación gráfica e interacción</h4>
+
+                  <p>
+                    Implementé la representación de las cartas con
+                    texturas para el frente y el reverso. La selección
+                    utiliza la posición del mouse y los límites de cada
+                    carta para identificar el clic y actualizar
+                    lo que aparece en pantalla.
+                  </p>
+
+                  <h4>Control de cartas y parejas</h4>
+
+                  <p>
+                    Programé los estados de cada carta para distinguir
+                    cuáles están ocultas, reveladas o emparejadas.
+                    Al seleccionar dos, el sistema comprueba si coinciden.
+                    Si son diferentes, permanecen visibles durante
+                    un intervalo antes de ocultarse, dando al jugador
+                    tiempo para recordar sus posiciones.
+                  </p>
+
+                  <h4>Dificultad y generación del tablero</h4>
+
+                  <p>
+                    Implementé distintos tamaños de tablero y una
+                    distribución aleatoria de las parejas para variar
+                    cada partida. La cantidad de cartas aumenta
+                    la información que el jugador debe recordar,
+                    mientras que el temporizador limita el tiempo
+                    disponible para completar el juego.
+                  </p>
+                </div>
+              </details>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROYECTO 05: HEAR&SEEK -->
+
+        <article class="project" aria-labelledby="project-title-5">
+          <header class="project-heading reveal">
+            <span class="project-number">05</span>
+
+            <div class="project-heading-text">
+              <p class="eyebrow project-category">
+                Prop Hunt / Multijugador / En desarrollo
+              </p>
+
+              <h3 id="project-title-5">HEAR&amp;SEEK</h3>
+            </div>
+
+            <span class="project-symbol" aria-hidden="true">↘</span>
+          </header>
+
+          <figure class="project-media reveal">
+            <img
+              src="Images/HearSeeek.jpg"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            >
+
+            <figcaption class="media-label">
+              Proyecto 05 — En desarrollo
+            </figcaption>
+          </figure>
+
+          <div class="project-information reveal">
+            <div class="project-facts">
+              <div>
+                <span class="fact-label">Mi rol</span>
+
+                <p>
+                  [Indica aquí tu contribución individual al proyecto.]
+                </p>
+              </div>
+
+              <div>
+                <span class="fact-label">Herramientas</span>
+                <p>Unity, C#, Mirror</p>
+              </div>
+
+              <div>
+                <span class="fact-label">Estado</span>
+                <p>Prototipo en desarrollo.</p>
+              </div>
+            </div>
+
+            <div class="project-story">
+              <p class="project-hook">
+                Un Prop Hunt multijugador donde los jugadores modifican
+                su voz para imitar los sonidos de una granja
+                y evitar ser descubiertos.
+              </p>
+
+              <p class="project-description">
+                Hear&amp;Seek combina el camuflaje visual con la creación
+                de sonidos. La propuesta contempla partidas de hasta
+                cinco jugadores, con un cazador en primera persona
+                y jugadores que se esconden en tercera persona.
+                El desarrollo reúne una base multijugador y un taller
+                de audio para grabar, procesar y escuchar la voz.
+                La integración del sonido personalizado entre jugadores
+                continúa en desarrollo.
+              </p>
+
+              <details class="design-details">
+                <summary>
+                  <span>Detrás del diseño</span>
+                  <span class="details-icon" aria-hidden="true"></span>
+                </summary>
+
+                <div class="details-content">
+                  <h4>La voz como mecánica de camuflaje</h4>
+
+                  <p>
+                    La propuesta permite que el jugador grabe su voz
+                    y la transforme para imitar el objeto o animal
+                    que representa. Elegir un escondite y preparar
+                    un sonido convincente forman parte de la misma
+                    estrategia para evitar al cazador.
+                  </p>
+
+                  <h4>Procesamiento de audio dentro del juego</h4>
+
+                  <p>
+                    El prototipo del taller de sonido permite grabar
+                    y reproducir la voz, ajustar el tono y la amplitud,
+                    y combinar filtros, eco, reverberación y compresión.
+                    Las formas de onda de referencia y del resultado
+                    permiten observar los cambios mientras se escucha
+                    y ajusta la grabación.
+                  </p>
+
+                  <h4>Búsqueda guiada por el oído</h4>
+
+                  <p>
+                    El diseño plantea que el cazador utilice los sonidos
+                    para localizar jugadores y reconocer imitaciones
+                    sospechosas. Este sistema busca complementar
+                    la búsqueda visual con decisiones basadas en
+                    lo que se escucha. La transmisión del audio
+                    personalizado y su integración con las rondas
+                    siguen en desarrollo.
+                  </p>
+                </div>
+              </details>
+            </div>
+          </div>
+        </article>
+
+        <footer class="work-footer">
+          <span>Alejandro Silva / Game Designer</span>
+
+          <a href="#inicio">
+            Volver arriba
+            <span aria-hidden="true">↑</span>
+          </a>
+        </footer>
+
+      </div>
+    </section>
+  </main>
+
+  <script>
+    /* TRADUCCIÓN DEL PORTAFOLIO */
+
+    (() => {
+      const english = {
+        "Ver en YouTube ↗": "Watch on YouTube ↗",
+        "Portafolio de Alejandro Silva": "Alejandro Silva’s portfolio",
+        "carrusel": "carousel",
+        "Ir a los proyectos": "Skip to projects",
+        "PORTAFOLIO": "PORTFOLIO",
+        "Explorar proyectos ↘": "Explore projects ↘",
+        "Este soy yo": "That's me",
+        "INGENIERO EN MULTIMEDIA": "MULTIMEDIA ENGINEER",
+        "Ver mi trabajo": "View my work",
+        "Sobre mí": "About me",
+        "SOBRE": "ABOUT",
+        "MÍ": "ME",
+
+        "Soy Alejandro Silva, estudiante de Ingeniería Multimedia enfocado en el desarrollo de videojuegos. Me gusta crear mecánicas, convertir ideas en prototipos y experimentar con distintas formas de hacer que un juego funcione.":
+          "I'm Alejandro Silva, a Multimedia Engineering student focused on game development. I enjoy creating mechanics, turning ideas into prototypes, and experimenting with different ways to make a game work.",
+
+        "Correo": "Email",
+
+        "Programo y diseño videojuegos, trabajando principalmente en mecánicas, sistemas y prototipos.":
+          "I program and design games, mainly working on mechanics, systems, and prototypes.",
+
+        "He trabajado en interacción en realidad virtual, sistemas de combate, simulación física y entornos que se transforman con la música. Desarrollo principalmente con Unity y C#, y también he programado juegos con C++ y OpenGL.":
+          "I've worked on virtual reality interaction, combat systems, physics simulation, and environments that transform with music. I mainly develop with Unity and C#, and I've also programmed games using C++ and OpenGL.",
+
+        "Generación procedural de ecosistemas virtuales a partir de álbumes musicales":
+          "Procedural generation of virtual ecosystems from music albums",
+
+        "Proyecto 01": "Project 01",
+        "Mi rol": "My role",
+
+        "Diseño y desarrollo integral — proyecto individual.":
+          "End-to-end design and development — solo project.",
+
+        "Herramientas": "Tools",
+
+        "Proyecto seleccionado para ser presentado en el Congreso Internacional de Ciencias Básicas e Ingeniería — CICI 2026, el 8 de octubre.":
+          "Project selected for presentation at the International Congress of Basic Sciences and Engineering — CICI 2026, on October 8.",
+
+        "Diseñé una experiencia interactiva en Unity donde la música no acompaña al mundo: lo construye y lo transforma. Cada canción modifica el entorno, el clima, la iluminación y la atmósfera, convirtiendo un álbum completo en una experiencia explorable y cambiante.":
+          "I designed an interactive experience in Unity where music builds and transforms the world. Each song changes the environment, weather, lighting, and atmosphere, turning an entire album into an evolving experience that players can explore.",
+
+        "Detrás del diseño": "Behind the design",
+        "La música construye el mundo": "Music builds the world",
+
+        "¿Cómo lograr que la música transformara un mundo jugable sin sentirse como un simple visualizador? El reto fue convertir cada canción en cambios perceptibles del entorno, manteniendo siempre una relación clara entre lo que el jugador escucha y lo que sucede en pantalla.":
+          "How could music transform a playable world without feeling like a simple visualizer? The challenge was to turn each song into noticeable environmental changes while maintaining a clear connection between what the player hears and what happens on screen.",
+
+        "Un sistema, múltiples experiencias":
+          "One system, multiple experiences",
+
+        "Diseñé un sistema capaz de interpretar las características de cada canción y traducirlas en cambios visuales. Esto permite que cada pista genere una versión distinta del mismo ecosistema sin diseñar manualmente cada escenario.":
+          "I designed a system that interprets the characteristics of each song and translates them into visual changes. This allows each track to generate a different version of the same ecosystem without manually designing every scene.",
+
+        "Todo tiene una causa": "Everything has a cause",
+
+        "Definí una regla central de diseño: nada aparece en el mundo si la música no lo provoca. Desde un cambio en el paisaje hasta la lluvia o la aparición de elementos visuales, cada transformación debe estar conectada con lo que está sonando.":
+          "I defined a central design rule: nothing appears in the world unless the music triggers it. From changes in the landscape to rain or visual elements, every transformation must be connected to what is playing.",
+
+        "Proyecto 02": "Project 02",
+
+        "Programación de gameplay — armas, interacción VR y jefe final.":
+          "Gameplay programming — weapons, VR interaction, and final boss.",
+
+        "Un shooter arcade en realidad virtual para celebrar los 25 años de Ingeniería en Multimedia.":
+          "An arcade shooter in virtual reality celebrating 25 years of Multimedia Engineering.",
+
+        "Inspirado en Doom y Galaga, MULAGA 25 lleva al jugador a recorrer escenarios y enfrentar enemigos para rescatar a los profesores de Ingeniería en Multimedia de la UMNG. Dentro del equipo, desarrollé las mecánicas de armas, granadas y escudos, además de un jefe final con distintas fases y patrones de ataque.":
+          "Inspired by Doom and Galaga, MULAGA 25 takes players through environments and enemy encounters to rescue UMNG's Multimedia Engineering professors. Within the team, I developed weapon, grenade, and shield mechanics, along with a final boss featuring multiple phases and attack patterns.",
+
+        "Armas e interacción en VR": "Weapons and VR interaction",
+
+        "Desarrollé la interacción para equipar el arma, apuntar y disparar con el gatillo del controlador. Trabajé en el comportamiento de los proyectiles y su detección de impactos para conectar las acciones del jugador con la respuesta del combate.":
+          "I developed interactions for equipping the weapon, aiming, and firing with the controller trigger. I worked on projectile behavior and hit detection to connect the player's actions with combat feedback.",
+
+        "Granadas y escudos": "Grenades and shields",
+
+        "Implementé granadas y escudos como alternativas durante los enfrentamientos. Las granadas permiten atacar un área y los escudos ofrecen protección, ampliando las opciones del jugador más allá del disparo.":
+          "I implemented grenades and shields as additional options during combat. Grenades allow area attacks and shields provide protection, expanding the player's options beyond shooting.",
+
+        "Diseño del jefe final": "Final boss design",
+
+        "Desarrollé e integré un jefe con fases de combate y diferentes patrones de ataque. El enfrentamiento exige reconocer las amenazas, esquivar y encontrar oportunidades para atacar, con mecánicas inspiradas en los juegos soulslike.":
+          "I developed and integrated a boss with combat phases and different attack patterns. The encounter requires players to recognize threats, dodge, and find opportunities to attack, with mechanics inspired by soulslike games.",
+
+        "Simulación física / 2D": "Physics simulation / 2D",
+        "Proyecto 03": "Project 03",
+
+        "Programación de gameplay — carga del disparo, predicción de trayectoria y sistemas de daño y victoria.":
+          "Gameplay programming — shot charging, trajectory prediction, damage, and victory systems.",
+
+        "Controlar la fuerza del disparo y anticipar su trayectoria bajo el efecto del viento y la gravedad.":
+          "Control shot strength and anticipate its trajectory under the effects of wind and gravity.",
+
+        "En este proyecto en equipo, desarrollé la carga progresiva del disparo y su predicción visual mediante puntos. También implementé la vida de los enemigos, la condición de victoria y el daño causado por impactos de las paredes al alcanzar una velocidad determinada.":
+          "In this team project, I developed progressive shot charging and a dotted trajectory preview. I also implemented enemy health, the victory condition, and damage caused by wall impacts when they reach a specified speed.",
+
+        "Carga del disparo": "Shot charging",
+
+        "Implementé una carga que aumenta mientras el jugador mantiene presionado el clic izquierdo. Al llegar al máximo, la fuerza vuelve al mínimo y comienza otro ciclo. El jugador debe soltar en el momento adecuado para disparar con la fuerza que necesita.":
+          "I implemented a charge that increases while the player holds the left mouse button. Once it reaches the maximum, the force resets to the minimum and starts another cycle. The player must release at the right moment to fire with the required force.",
+
+        "Predicción de trayectoria": "Trajectory prediction",
+
+        "Desarrollé una guía de puntos que muestra el recorrido estimado antes de disparar. El cálculo considera la posición inicial, la dirección, la fuerza del disparo y la aceleración producida por el viento y la gravedad, permitiendo anticipar cómo estas variables afectan la trayectoria.":
+          "I developed a dotted guide that shows the estimated path before firing. The calculation considers the initial position, direction, shot strength, and acceleration caused by wind and gravity, allowing players to anticipate how these variables affect the trajectory.",
+
+        "Daño y condición de victoria": "Damage and victory condition",
+
+        "Implementé un sistema de vida para que los enemigos recibieran daño hasta ser eliminados y una señal visual de victoria al derrotarlos a todos. También configuré el daño por impactos de las paredes, condicionado a una velocidad mínima para que el contacto cuente como daño.":
+          "I implemented a health system so enemies take damage until they are eliminated, along with a visual victory indicator when all enemies are defeated. I also configured wall impact damage with a minimum speed threshold for contact to count as damage.",
+
+        "Memoria / 2D": "Memory / 2D",
+        "Proyecto 04": "Project 04",
+
+        "Programación gráfica y de gameplay — interacción con cartas, comprobación de parejas y dificultad.":
+          "Graphics and gameplay programming — card interaction, pair matching, and difficulty.",
+
+        "Encontrar todas las parejas antes de que termine el tiempo. Cada intento revela información que necesitas recordar.":
+          "Find every pair before time runs out. Each attempt reveals information you need to remember.",
+
+        "Desarrollé un juego de memoria en C++ con OpenGL, programando la representación de las cartas y su interacción con el mouse. Integré la comprobación de parejas, la distribución aleatoria del tablero y distintos niveles de dificultad.":
+          "I developed a memory game in C++ with OpenGL, programming card rendering and mouse interaction. I integrated pair matching, randomized board layouts, and different difficulty levels.",
+
+        "Programación gráfica e interacción":
+          "Graphics programming and interaction",
+
+        "Implementé la representación de las cartas con texturas para el frente y el reverso. La selección utiliza la posición del mouse y los límites de cada carta para identificar el clic y actualizar lo que aparece en pantalla.":
+          "I implemented card rendering with textures for the front and back. Selection uses the mouse position and each card's bounds to identify clicks and update what appears on screen.",
+
+        "Control de cartas y parejas": "Card states and pair matching",
+
+        "Programé los estados de cada carta para distinguir cuáles están ocultas, reveladas o emparejadas. Al seleccionar dos, el sistema comprueba si coinciden. Si son diferentes, permanecen visibles durante un intervalo antes de ocultarse, dando al jugador tiempo para recordar sus posiciones.":
+          "I programmed each card's states to distinguish hidden, revealed, and matched cards. When two cards are selected, the system checks whether they match. If they differ, they remain visible briefly before being hidden, giving the player time to remember their positions.",
+
+        "Dificultad y generación del tablero":
+          "Difficulty and board generation",
+
+        "Implementé distintos tamaños de tablero y una distribución aleatoria de las parejas para variar cada partida. La cantidad de cartas aumenta la información que el jugador debe recordar, mientras que el temporizador limita el tiempo disponible para completar el juego.":
+          "I implemented different board sizes and randomized pair layouts to vary each game. More cards increase the information players must remember, while the timer limits the time available to complete the game.",
+
+        "Prop Hunt / Multijugador / En desarrollo":
+          "Prop Hunt / Multiplayer / In development",
+
+        "Proyecto 05 — En desarrollo": "Project 05 — In development",
+
+        "[Indica aquí tu contribución individual al proyecto.]":
+          "[Enter your individual contribution to the project here.]",
+
+        "Estado": "Status",
+        "Prototipo en desarrollo.": "Prototype in development.",
+
+        "Un Prop Hunt multijugador donde los jugadores modifican su voz para imitar los sonidos de una granja y evitar ser descubiertos.":
+          "A multiplayer Prop Hunt where players modify their voices to imitate farm sounds and avoid being discovered.",
+
+        "Hear&Seek combina el camuflaje visual con la creación de sonidos. La propuesta contempla partidas de hasta cinco jugadores, con un cazador en primera persona y jugadores que se esconden en tercera persona. El desarrollo reúne una base multijugador y un taller de audio para grabar, procesar y escuchar la voz. La integración del sonido personalizado entre jugadores continúa en desarrollo.":
+          "Hear&Seek combines visual camouflage with sound creation. The concept supports matches of up to five players, with a first-person hunter and players hiding in third person. Development brings together a multiplayer foundation and an audio workshop for recording, processing, and listening to voice recordings. The integration of custom sound between players is still in development.",
+
+        "La voz como mecánica de camuflaje":
+          "Voice as a camouflage mechanic",
+
+        "La propuesta permite que el jugador grabe su voz y la transforme para imitar el objeto o animal que representa. Elegir un escondite y preparar un sonido convincente forman parte de la misma estrategia para evitar al cazador.":
+          "The concept allows players to record and transform their voices to imitate the object or animal they represent. Choosing a hiding place and preparing a convincing sound are part of the same strategy for avoiding the hunter.",
+
+        "Procesamiento de audio dentro del juego":
+          "In-game audio processing",
+
+        "El prototipo del taller de sonido permite grabar y reproducir la voz, ajustar el tono y la amplitud, y combinar filtros, eco, reverberación y compresión. Las formas de onda de referencia y del resultado permiten observar los cambios mientras se escucha y ajusta la grabación.":
+          "The sound workshop prototype allows players to record and play back their voices, adjust pitch and amplitude, and combine filters, echo, reverb, and compression. Reference and output waveforms let players observe changes while listening to and adjusting the recording.",
+
+        "Búsqueda guiada por el oído": "Searching by sound",
+
+        "El diseño plantea que el cazador utilice los sonidos para localizar jugadores y reconocer imitaciones sospechosas. Este sistema busca complementar la búsqueda visual con decisiones basadas en lo que se escucha. La transmisión del audio personalizado y su integración con las rondas siguen en desarrollo.":
+          "The design proposes that hunters use sounds to locate players and identify suspicious imitations. This system aims to complement visual searching with decisions based on what players hear. Custom audio transmission and its integration with rounds are still in development.",
+
+        "Volver arriba": "Back to top",
+        "Volver al inicio": "Back to home",
+
+        "Portafolio de Alejandro Silva. Game Designer e Ingeniero en Multimedia.":
+          "Alejandro Silva’s portfolio. Game Designer and Multimedia Engineer.",
+
+        "Gameplay del ecosistema virtual generado a partir de música":
+          "Gameplay of the virtual ecosystem generated from music",
+
+        "Tráiler de MULAGA 25": "MULAGA 25 trailer",
+
+        "Capturas de Cannon Crashers": "Cannon Crashers screenshots",
+        "Interfaz de Cannon Crashers": "Cannon Crashers interface",
+        "Captura 1 de Cannon Crashers": "Cannon Crashers screenshot 1",
+        "Captura 2 de Cannon Crashers": "Cannon Crashers screenshot 2",
+
+        "Imagen anterior de Cannon Crashers":
+          "Previous Cannon Crashers image",
+
+        "Imagen siguiente de Cannon Crashers":
+          "Next Cannon Crashers image",
+
+        "Capturas de Concéntrese": "Concéntrese screenshots",
+        "Tablero del juego Concéntrese": "Concéntrese game board",
+        "Interfaz del juego Concéntrese": "Concéntrese game interface",
+        "Imagen anterior de Concéntrese": "Previous Concéntrese image",
+        "Imagen siguiente de Concéntrese": "Next Concéntrese image",
+
+        "Seleccionar idioma": "Select language"
+      };
+
+      const normalize = (value) => {
+        return value.replace(/\s+/g, " ").trim();
+      };
+
+      const textEntries = [];
+      const attributeEntries = [];
+
+      const walker = document.createTreeWalker(
+        document.documentElement,
+        NodeFilter.SHOW_TEXT
+      );
+
+      while (walker.nextNode()) {
+        const node = walker.currentNode;
+
+        if (
+          node.parentElement.closest(
+            "script, style, .language-switch"
+          )
+        ) {
+          continue;
+        }
+
+        const key = normalize(node.nodeValue);
+
+        if (
+          Object.prototype.hasOwnProperty.call(english, key)
+        ) {
+          const original = node.nodeValue;
+          const leading = original.match(/^\s*/)[0];
+          const trailing = original.match(/\s*$/)[0];
+
+          textEntries.push({
+            node,
+            es: original,
+            en: leading + english[key] + trailing
+          });
+        }
+      }
+
+      document.querySelectorAll(
+        "[aria-label], [alt], [title], [aria-roledescription], meta[name='description']"
+      ).forEach((element) => {
+        [
+          "aria-label",
+          "alt",
+          "title",
+          "aria-roledescription",
+          "content"
+        ].forEach((attribute) => {
+          const es = element.getAttribute(attribute);
+
+          if (es && english[normalize(es)]) {
+            attributeEntries.push({
+              element,
+              attribute,
+              es,
+              en: english[normalize(es)]
+            });
+          }
+        });
+      });
+
+      let currentLanguage = "es";
+
+      function setLanguage(language) {
+        currentLanguage = language === "en" ? "en" : "es";
+
+        document.documentElement.lang = currentLanguage;
+
+        textEntries.forEach((entry) => {
+          entry.node.nodeValue = entry[currentLanguage];
+        });
+
+        attributeEntries.forEach((entry) => {
+          entry.element.setAttribute(
+            entry.attribute,
+            entry[currentLanguage]
+          );
+        });
+
+        document.querySelectorAll(
+          "[data-language]"
+        ).forEach((button) => {
+          button.setAttribute(
+            "aria-pressed",
+            String(
+              button.dataset.language === currentLanguage
+            )
+          );
+        });
+
+        try {
+          localStorage.setItem(
+            "portfolio-language",
+            currentLanguage
+          );
+        } catch (_) {}
+      }
+
+      document.querySelectorAll(
+        "[data-language]"
+      ).forEach((button) => {
+        button.addEventListener("click", () => {
+          setLanguage(button.dataset.language);
+        });
+      });
+
+      // Oculta el icono roto si falta una bandera.
+      document.querySelectorAll(
+        ".language-flag"
+      ).forEach((image) => {
+        image.addEventListener("error", () => {
+          image.hidden = true;
+        });
+
+        if (image.complete && image.naturalWidth === 0) {
+          image.hidden = true;
+        }
+      });
+
+      let initialLanguage = document.documentElement.lang;
+
+      try {
+        initialLanguage =
+          localStorage.getItem("portfolio-language") ||
+          initialLanguage;
+      } catch (_) {}
+
+      setLanguage(initialLanguage);
+    })();
+  </script>
+
+  <script>
+    /* GALERÍAS: BOTONES, TECLADO Y GESTOS TÁCTILES */
+
+    document.querySelectorAll(
+      "[data-gallery]"
+    ).forEach((gallery) => {
+      const slides = Array.from(
+        gallery.querySelectorAll(".gallery-slide")
+      );
+
+      const counter = gallery.querySelector(
+        ".gallery-counter"
+      );
+
+      let current = 0;
+
+      function show(index) {
+        current = (index + slides.length) % slides.length;
+
+        slides.forEach((slide, i) => {
+          slide.hidden = i !== current;
+        });
+
+        counter.textContent =
+          `${current + 1} / ${slides.length}`;
+      }
+
+      gallery.querySelector(
+        ".gallery-arrow--previous"
+      ).addEventListener("click", () => {
+        show(current - 1);
+      });
+
+      gallery.querySelector(
+        ".gallery-arrow--next"
+      ).addEventListener("click", () => {
+        show(current + 1);
+      });
+
+      gallery.addEventListener("keydown", (event) => {
+        if (
+          event.key === "ArrowLeft" ||
+          event.key === "ArrowRight"
+        ) {
+          event.preventDefault();
+
+          show(
+            current +
+            (event.key === "ArrowRight" ? 1 : -1)
+          );
+        }
+      });
+
+      let start = null;
+
+      gallery.addEventListener("touchstart", (event) => {
+        start = event.touches.length === 1
+          ? [
+              event.touches[0].clientX,
+              event.touches[0].clientY
+            ]
+          : null;
+      }, { passive: true });
+
+      gallery.addEventListener("touchend", (event) => {
+        if (!start) return;
+
+        const dx =
+          event.changedTouches[0].clientX - start[0];
+
+        const dy =
+          event.changedTouches[0].clientY - start[1];
+
+        if (
+          Math.abs(dx) > 50 &&
+          Math.abs(dx) > Math.abs(dy)
+        ) {
+          show(current + (dx < 0 ? 1 : -1));
+        }
+
+        start = null;
+      }, { passive: true });
+
+      gallery.addEventListener("touchcancel", () => {
+        start = null;
+      }, { passive: true });
+
+      show(0);
+    });
+
+    /* APARICIÓN AL HACER SCROLL */
+
+    (() => {
+      const preference = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      );
+
+      const elements = document.querySelectorAll(
+        ".reveal"
+      );
+
+      if (
+        preference.matches ||
+        !("IntersectionObserver" in window)
+      ) {
+        return;
+      }
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.remove(
+                "reveal-pending"
+              );
+
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0,
+          rootMargin: "0px 0px -24px 0px"
+        }
+      );
+
+      elements.forEach((element) => {
+        if (
+          element.getBoundingClientRect().top >=
+          window.innerHeight
+        ) {
+          element.classList.add("reveal-pending");
+          observer.observe(element);
+        }
+      });
+
+      document.addEventListener("focusin", (event) => {
+        const parent = event.target.closest(
+          ".reveal-pending"
+        );
+
+        if (parent) {
+          parent.classList.remove("reveal-pending");
+          observer.unobserve(parent);
+        }
+      });
+
+      preference.addEventListener("change", (event) => {
+        if (event.matches) {
+          observer.disconnect();
+
+          elements.forEach((element) => {
+            element.classList.remove("reveal-pending");
+          });
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
