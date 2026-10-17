@@ -219,6 +219,40 @@
       color: #2452ec;
     }
 
+    /* TEXTOS MÁS GRANDES */
+
+    .hero-pitch .role {
+      font-size: clamp(18px, 1.6vw, 22px);
+      line-height: 1.5;
+      letter-spacing: 0.025em;
+    }
+
+    .project-heading .project-category {
+      font-size: clamp(16px, 1.3vw, 18px);
+      line-height: 1.5;
+      letter-spacing: 0.04em;
+    }
+
+    .work .project-facts .fact-label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: clamp(15px, 1.2vw, 17px);
+      line-height: 1.5;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .work .project-facts p {
+      font-size: clamp(18px, 1.5vw, 20px);
+      line-height: 1.65;
+      overflow-wrap: anywhere;
+    }
+
+    .work .project-facts p a {
+      font-size: inherit;
+      line-height: inherit;
+    }
+
     @media (max-width: 600px) {
       .header.page-width {
         display: flex;
@@ -1034,7 +1068,8 @@
                 <span class="fact-label">Mi rol</span>
 
                 <p>
-                  [Indica aquí tu contribución individual al proyecto.]
+                  Me encargo del desarrollo de las mecánicas del jugador,
+                  la conexión multijugador y el sintetizador de audio.
                 </p>
               </div>
 
@@ -1275,8 +1310,8 @@
 
         "Proyecto 05 — En desarrollo": "Project 05 — In development",
 
-        "[Indica aquí tu contribución individual al proyecto.]":
-          "[Enter your individual contribution to the project here.]",
+        "Me encargo del desarrollo de las mecánicas del jugador, la conexión multijugador y el sintetizador de audio.":
+          "I am responsible for developing the player mechanics, multiplayer networking, and audio synthesizer.",
 
         "Estado": "Status",
         "Prototipo en desarrollo.": "Prototype in development.",
@@ -1443,7 +1478,6 @@
         });
       });
 
-      // Oculta el icono roto si falta una bandera.
       document.querySelectorAll(
         ".language-flag"
       ).forEach((image) => {
