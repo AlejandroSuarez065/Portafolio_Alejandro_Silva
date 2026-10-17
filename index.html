@@ -3,11 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#58b3f4">
 
   <title>Alejandro Silva — Game Designer</title>
 
   <meta
     name="description"
+    content="Portafolio de Alejandro Silva. Game Designer e Ingeniero en Multimedia."
+  >
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Alejandro Silva — Game Designer">
+  <meta
+    property="og:description"
     content="Portafolio de Alejandro Silva. Game Designer e Ingeniero en Multimedia."
   >
 
@@ -20,277 +28,6 @@
   >
 
   <link rel="stylesheet" href="styles.css">
-
-  <style>
-    /* GALERÍAS */
-
-    .project-gallery {
-      position: relative;
-      overflow: hidden;
-      isolation: isolate;
-      background: #10131b;
-    }
-
-    .project-gallery .gallery-slide {
-      margin: 0;
-      width: 100%;
-    }
-
-    .project-gallery .gallery-slide[hidden] {
-      display: none !important;
-    }
-
-    .project-gallery .gallery-slide img {
-      display: block;
-      width: 100%;
-      height: auto;
-      aspect-ratio: 16 / 9;
-      object-fit: contain;
-    }
-
-    .project-gallery .gallery-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 5;
-      display: grid;
-      place-items: center;
-      width: 56px;
-      height: 56px;
-      padding: 0;
-      border: 2px solid #fff;
-      border-radius: 50%;
-      background: #111827;
-      color: #fff;
-      opacity: 1;
-      visibility: visible;
-      cursor: pointer;
-      box-shadow: 0 4px 18px #0009;
-    }
-
-    .project-gallery .gallery-arrow--previous {
-      left: 16px;
-    }
-
-    .project-gallery .gallery-arrow--next {
-      right: 16px;
-    }
-
-    .project-gallery .gallery-arrow svg {
-      width: 28px;
-      height: 28px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 3;
-    }
-
-    .project-gallery .gallery-arrow:hover {
-      background: #2452ec;
-    }
-
-    .project-gallery .gallery-arrow:focus-visible,
-    .project-gallery:focus-visible {
-      outline: 4px solid #ffdf58;
-      outline-offset: -4px;
-    }
-
-    .project-gallery .gallery-counter {
-      position: absolute;
-      z-index: 5;
-      bottom: 16px;
-      left: 50%;
-      transform: translateX(-50%);
-      border: 1px solid #ffffff80;
-      border-radius: 999px;
-      padding: 8px 14px;
-      background: #111827;
-      color: #fff;
-      font: 600 14px/1.2 Inter, sans-serif;
-    }
-
-    .project-gallery .media-label {
-      z-index: 4;
-    }
-
-    /* SELECTOR DE IDIOMA */
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .language-switch {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .language-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 7px;
-      min-height: 40px;
-      padding: 8px 10px;
-      border: 1px solid currentColor;
-      border-radius: 6px;
-      background: transparent;
-      color: inherit;
-      font: 600 12px/1.2 Inter, sans-serif;
-      cursor: pointer;
-    }
-
-    .language-button[aria-pressed="true"] {
-      background: #2452ec;
-      border-color: #2452ec;
-      color: #fff;
-    }
-
-    .language-button:hover {
-      box-shadow: 0 0 0 1px currentColor;
-    }
-
-    .language-button:focus-visible {
-      outline: 3px solid #ffdf58;
-      outline-offset: 3px;
-    }
-
-    /* BANDERAS PEQUEÑAS */
-
-    .language-flag-slot {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 22px;
-      height: 16px;
-      flex: 0 0 22px;
-    }
-
-    .language-flag {
-      display: block;
-      width: 22px !important;
-      height: 16px !important;
-      max-width: 22px !important;
-      object-fit: contain;
-    }
-
-    .language-flag[hidden] {
-      display: none !important;
-    }
-
-    /* VIDEOS DE YOUTUBE */
-
-    .youtube-project .youtube-frame {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      min-height: 200px;
-      overflow: hidden;
-      background: #10131b;
-    }
-
-    .youtube-project .youtube-frame iframe {
-      position: absolute;
-      inset: 0;
-      display: block;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-
-    .youtube-project .media-label {
-      pointer-events: none;
-    }
-
-    .youtube-link {
-      margin: 12px 0 0;
-      font: 500 13px/1.5 Inter, sans-serif;
-    }
-
-    .youtube-link a {
-      color: inherit;
-      text-underline-offset: 4px;
-    }
-
-    .youtube-link a:hover {
-      color: #2452ec;
-    }
-
-    /* TEXTOS MÁS GRANDES */
-
-    .hero-pitch .role {
-      font-size: clamp(18px, 1.6vw, 22px);
-      line-height: 1.5;
-      letter-spacing: 0.025em;
-    }
-
-    .project-heading .project-category {
-      font-size: clamp(16px, 1.3vw, 18px);
-      line-height: 1.5;
-      letter-spacing: 0.04em;
-    }
-
-    .work .project-facts .fact-label {
-      display: block;
-      margin-bottom: 8px;
-      font-size: clamp(15px, 1.2vw, 17px);
-      line-height: 1.5;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-    }
-
-    .work .project-facts p {
-      font-size: clamp(18px, 1.5vw, 20px);
-      line-height: 1.65;
-      overflow-wrap: anywhere;
-    }
-
-    .work .project-facts p a {
-      font-size: inherit;
-      line-height: inherit;
-    }
-
-    @media (max-width: 600px) {
-      .header.page-width {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        flex-wrap: wrap;
-      }
-
-      .header-actions {
-        gap: 10px;
-      }
-
-      .language-button {
-        min-height: 40px;
-        padding: 7px 8px;
-        font-size: 11px;
-      }
-
-      .project-gallery .gallery-arrow {
-        width: 44px;
-        height: 44px;
-      }
-
-      .project-gallery .gallery-arrow--previous {
-        left: 8px;
-      }
-
-      .project-gallery .gallery-arrow--next {
-        right: 8px;
-      }
-
-      .project-gallery .gallery-counter {
-        bottom: 8px;
-        padding: 6px 10px;
-      }
-    }
-  </style>
 </head>
 
 <body>
@@ -406,7 +143,7 @@
       <div class="page-width">
         <div class="status-bar">
           <span class="status-item">
-            <span class="status-dot" aria-hidden="true"></span>
+        
             Portafolio de Alejandro Silva
           </span>
 
@@ -549,9 +286,9 @@
 
             <div class="project-story">
               <p class="project-hook">
-                Proyecto seleccionado para ser presentado en el
+                Proyecto presentado en el
                 Congreso Internacional de Ciencias Básicas e
-                Ingeniería — CICI 2026, el 8 de octubre.
+                Ingeniería — CICI 2026.
               </p>
 
               <p class="project-description">
@@ -1052,7 +789,7 @@
           <figure class="project-media reveal">
             <img
               src="Images/HearSeeek.jpg"
-              alt=""
+              alt="Captura del prototipo de Hear&amp;Seek"
               loading="lazy"
               decoding="async"
             >
@@ -1161,11 +898,86 @@
   </main>
 
   <script>
+    /* VIDEOS DE YOUTUBE: PORTADA + CARGA AL HACER CLIC
+       El reproductor de YouTube pesa bastante. Se muestra la miniatura
+       con un botón de play y el reproductor real se carga solo cuando
+       la persona lo pide. Sin JavaScript, el iframe funciona igual.
+       Este bloque va antes de la traducción para que se traduzcan
+       los textos que crea. */
+
+    document.querySelectorAll(".youtube-frame").forEach((frame) => {
+      const iframe = frame.querySelector("iframe");
+
+      if (!iframe) return;
+
+      const match = iframe.src.match(/\/embed\/([\w-]{11})/);
+
+      if (!match) return;
+
+      const id = match[1];
+      const posterMax = `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`;
+      const posterHigh = `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "youtube-facade";
+      button.setAttribute("aria-label", iframe.getAttribute("title") || "");
+
+      const poster = document.createElement("img");
+      poster.alt = "";
+      poster.loading = "lazy";
+      poster.decoding = "async";
+      poster.src = posterMax;
+
+      let usedFallback = false;
+
+      const useFallback = () => {
+        if (usedFallback) return;
+        usedFallback = true;
+        poster.src = posterHigh;
+      };
+
+      poster.addEventListener("error", useFallback);
+
+      poster.addEventListener("load", () => {
+        if (poster.naturalWidth <= 120) useFallback();
+      });
+
+      const play = document.createElement("span");
+      play.className = "youtube-facade-play";
+      play.setAttribute("aria-hidden", "true");
+      play.innerHTML =
+        '<span class="play-circle">' +
+        '<svg viewBox="0 0 24 24" aria-hidden="true">' +
+        '<path d="M8 5v14l11-7z"></path></svg></span>' +
+        '<span class="play-label">Reproducir video</span>';
+
+      button.append(poster, play);
+
+      const embedUrl = new URL(iframe.src);
+      embedUrl.searchParams.set("autoplay", "1");
+      embedUrl.searchParams.set("rel", "0");
+
+      frame.removeChild(iframe);
+      frame.appendChild(button);
+
+      button.addEventListener("click", () => {
+        iframe.removeAttribute("loading");
+        iframe.title = button.getAttribute("aria-label") || iframe.title;
+        iframe.src = embedUrl.toString();
+        frame.replaceChildren(iframe);
+        iframe.focus();
+      });
+    });
+  </script>
+
+  <script>
     /* TRADUCCIÓN DEL PORTAFOLIO */
 
     (() => {
       const english = {
         "Ver en YouTube ↗": "Watch on YouTube ↗",
+        "Reproducir video": "Play video",
         "Portafolio de Alejandro Silva": "Alejandro Silva’s portfolio",
         "carrusel": "carousel",
         "Ir a los proyectos": "Skip to projects",
@@ -1200,8 +1012,8 @@
 
         "Herramientas": "Tools",
 
-        "Proyecto seleccionado para ser presentado en el Congreso Internacional de Ciencias Básicas e Ingeniería — CICI 2026, el 8 de octubre.":
-          "Project selected for presentation at the International Congress of Basic Sciences and Engineering — CICI 2026, on October 8.",
+        "Proyecto presentado en el Congreso Internacional de Ciencias Básicas e Ingeniería — CICI 2026.":
+          "Project presented at the International Congress of Basic Sciences and Engineering — CICI 2026.",
 
         "Diseñé una experiencia interactiva en Unity donde la música no acompaña al mundo: lo construye y lo transforma. Cada canción modifica el entorno, el clima, la iluminación y la atmósfera, convirtiendo un álbum completo en una experiencia explorable y cambiante.":
           "I designed an interactive experience in Unity where music builds and transforms the world. Each song changes the environment, weather, lighting, and atmosphere, turning an entire album into an evolving experience that players can explore.",
@@ -1367,6 +1179,9 @@
         "Imagen anterior de Concéntrese": "Previous Concéntrese image",
         "Imagen siguiente de Concéntrese": "Next Concéntrese image",
 
+        "Captura del prototipo de Hear&Seek":
+          "Hear&Seek prototype screenshot",
+
         "Seleccionar idioma": "Select language"
       };
 
@@ -1503,7 +1318,9 @@
   </script>
 
   <script>
-    /* GALERÍAS: BOTONES, TECLADO Y GESTOS TÁCTILES */
+    /* GALERÍAS: BOTONES, TECLADO Y GESTOS TÁCTILES
+       Cada imagen entra desde el lado hacia el que avanzas. Solo se
+       animan opacity y transform (ver styles.css). */
 
     document.querySelectorAll(
       "[data-gallery]"
@@ -1518,12 +1335,35 @@
 
       let current = 0;
 
-      function show(index) {
-        current = (index + slides.length) % slides.length;
+      // Con JavaScript activo, todas las imágenes quedan apiladas
+      // y se alternan con transiciones en lugar de display: none.
+      gallery.setAttribute("data-gallery-ready", "");
 
-        slides.forEach((slide, i) => {
-          slide.hidden = i !== current;
-        });
+      slides.forEach((slide, i) => {
+        slide.hidden = false;
+        slide.dataset.state = i === 0 ? "active" : "after";
+      });
+
+      function show(index, direction) {
+        const next = (index + slides.length) % slides.length;
+
+        if (next === current) return;
+
+        const dir = direction || (next > current ? 1 : -1);
+        const leaving = slides[current];
+        const entering = slides[next];
+
+        // La imagen que entra se coloca primero en su lado, sin
+        // transición, y luego se anima hacia el centro.
+        entering.style.transition = "none";
+        entering.dataset.state = dir > 0 ? "after" : "before";
+        void entering.offsetWidth;
+        entering.style.transition = "";
+        entering.dataset.state = "active";
+
+        leaving.dataset.state = dir > 0 ? "before" : "after";
+
+        current = next;
 
         counter.textContent =
           `${current + 1} / ${slides.length}`;
@@ -1532,13 +1372,13 @@
       gallery.querySelector(
         ".gallery-arrow--previous"
       ).addEventListener("click", () => {
-        show(current - 1);
+        show(current - 1, -1);
       });
 
       gallery.querySelector(
         ".gallery-arrow--next"
       ).addEventListener("click", () => {
-        show(current + 1);
+        show(current + 1, 1);
       });
 
       gallery.addEventListener("keydown", (event) => {
@@ -1548,10 +1388,9 @@
         ) {
           event.preventDefault();
 
-          show(
-            current +
-            (event.key === "ArrowRight" ? 1 : -1)
-          );
+          const dir = event.key === "ArrowRight" ? 1 : -1;
+
+          show(current + dir, dir);
         }
       });
 
@@ -1579,7 +1418,9 @@
           Math.abs(dx) > 50 &&
           Math.abs(dx) > Math.abs(dy)
         ) {
-          show(current + (dx < 0 ? 1 : -1));
+          const dir = dx < 0 ? 1 : -1;
+
+          show(current + dir, dir);
         }
 
         start = null;
@@ -1588,27 +1429,18 @@
       gallery.addEventListener("touchcancel", () => {
         start = null;
       }, { passive: true });
-
-      show(0);
     });
 
-    /* APARICIÓN AL HACER SCROLL */
+    /* APARICIÓN AL HACER SCROLL
+       Con movimiento reducido también se activa, pero el CSS deja
+       solo el fundido (sin desplazamiento). */
 
     (() => {
-      const preference = window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-      );
+      if (!("IntersectionObserver" in window)) return;
 
       const elements = document.querySelectorAll(
         ".reveal"
       );
-
-      if (
-        preference.matches ||
-        !("IntersectionObserver" in window)
-      ) {
-        return;
-      }
 
       const observer = new IntersectionObserver(
         (entries) => {
@@ -1646,16 +1478,6 @@
         if (parent) {
           parent.classList.remove("reveal-pending");
           observer.unobserve(parent);
-        }
-      });
-
-      preference.addEventListener("change", (event) => {
-        if (event.matches) {
-          observer.disconnect();
-
-          elements.forEach((element) => {
-            element.classList.remove("reveal-pending");
-          });
         }
       });
     })();
